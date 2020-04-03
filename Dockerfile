@@ -5,9 +5,16 @@ ARG user=lfs-server-runner
 RUN apt-get update
 RUN apt-get upgrade -y
 
+RUN mkdir /scripts
+COPY before-run.sh /scripts/
+RUN chmod +x /scripts/before-run.sh
+
 RUN useradd -m $user
 RUN mkdir /lfs
+RUN mkdir /lfsconfig
+
 RUN chown $user:$user /lfs
+RUN chown $user:$user /lfsconfig
 
 RUN mkdir /home/$user/go
 
@@ -26,4 +33,4 @@ RUN chown -R $user:$user /home/$user/go
 
 ENV SERVER_USER ${user}
 
-CMD su -p $SERVER_USER -c /home/$SERVER_USER/run.sh
+CMD /scripts/before-run.sh

@@ -7,7 +7,10 @@ services:
       - "8080:9999"
     volumes:
       - /your/disk/lfs:/lfs
+      - /your/disk/lfsconfig:/lfsconfig
+      - /path/so/ssl:/ssl
     environment:
       - LFS_ADMIN=admin
       - LFS_ADMIN_PASS=admin
+      - LFS_EXT_HOST=lfs.your.domain:8123
     restart: always
