@@ -1,2 +1,2 @@
 # lfs-test-server-docker
-run lfs-test-server in a docker container
+Run lfs-test-server in a docker container. Highly experimental. Not affiliated with git-lfs.
