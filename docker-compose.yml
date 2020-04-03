@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    image: blazingasher/lfs-test-server:latest
+    container_name: lfs-server
+    ports:
+      - "8080:9999"
+    volumes:
+      - /your/disk/lfs:/lfs
+    environment:
+      - LFS_ADMIN=admin
+      - LFS_ADMIN_PASS=admin
+    restart: always
